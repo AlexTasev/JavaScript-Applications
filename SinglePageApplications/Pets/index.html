@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="static/style/styles.css">
+    <title>Document</title>
+</head>
+<body>
+
+<header id="site-header">
+    <nav class="navbar">
+        <section class="navbar-dashboard">
+            <div class="first-bar">
+                <a href="#/">Dashboard</a>
+                <a class="button" href="#/myPets">My Pets</a>
+                <a class="button" href="#/pet/add">Add Pet</a>
+            </div>
+            <div class="second-bar">
+                <ul>
+                    <li>Welcome, <span id="userNameView">{username}</span>!</li>
+                    <li><a href="#/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
+        </section>
+        <section class="navbar-anonymous">
+            <ul>
+                <li><a href="#/register"><i class="fas fa-user-plus"></i> Register</a></li>
+                <li><a href="#/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+            </ul>
+        </section>
+    </nav>
+</header>
+</div>
+
+<div id="notifications">
+    <div id="loadingBox" class="notification">
+        <span>Loading …</span>
+    </div>
+    <div id="infoBox" class="notification">
+        <span>Info</span>
+    </div>
+    <div id="errorBox" class="notification">
+        <span>Error</span>
+    </div>
+</div>
+
+<section id="container"></section>
+
+<footer id="site-footer">
+    <p>@PetMyPet</p>
+</footer>
+
+<!-- Libraries -->
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+<script src="node_modules/sammy/lib/min/sammy-latest.min.js"></script>
+<script src="node_modules/sammy/lib/min/plugins/sammy.handlebars-latest.min.js"></script>
+<!-- Services -->
+<script src="services/storage.js"></script>
+<script src="services/requester.js"></script>
+<!-- Models -->
+<script src="models/userModel.js"></script>
+<script src="models/petModel.js"></script>
+<!-- Controllers -->
+<script src="controllers/home.js"></script>
+<script src="controllers/user.js"></script>
+<script src="controllers/pet.js"></script>
+<!-- Router -->
+<script src="app.js"></script>
+<!-- Notifications -->
+<script src="services/notification.js"></script>
+<script>
+    $(document).ajaxStart(function () {
+        $("#loadingBox").show();
+    });
+    $(document).ajaxStop(function () {
+        $("#loadingBox").hide();
+    });
+</script>
+</body>
+</html>

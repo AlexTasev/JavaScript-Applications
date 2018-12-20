@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="static/css/style.css" rel="stylesheet"/>
+    <title>Document</title>
+</head>
+<body>
+<nav>
+    <div class="left-container">
+        <ul>
+            <li><a href="#/">Home</a></li>
+            <li><a href="#/myFlights">Flights</a></li>
+            <li class="hidden-when-logged"><a href="#/login">Login</a></li>
+            <li class="hidden-when-logged"><a href="#/register">Register</a></li>
+        </ul>
+    </div>
+    <div class="right-container ">
+        <div id="logoutContainer" class="d-none">
+            <span>Welcome, <span id="userNameSpanView">{name}</span>!</span>
+            <a href="#/logout" class="log-out">Logout</a>
+        </div>
+    </div>
+</nav>
+<div id="notifications">
+    <div id="loadingBox" class="notification">
+        <span>Loading …</span>
+    </div>
+    <div id="infoBox" class="notification">
+        <span>Info</span>
+    </div>
+    <div id="errorBox" class="notification">
+        <span>Error</span>
+    </div>
+</div>
+<section id="container"></section>
+<footer>@2018 SoftUni Airlines by AlexTasev</footer>
+<!-- Libraries -->
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/popper.js/dist/popper.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+<script src="node_modules/sammy/lib/min/sammy-latest.min.js"></script>
+<script src="node_modules/sammy/lib/min/plugins/sammy.handlebars-latest.min.js"></script>
+<!-- Helpers -->
+<script src="helpers/storage.js"></script>
+<script src="helpers/requester.js"></script>
+<!-- Models -->
+<script src="models/userModel.js"></script>
+<script src="models/flightModel.js"></script>
+<!-- Controllers -->
+<script src="controllers/home.js"></script>
+<script src="controllers/user.js"></script>
+<script src="controllers/flight.js"></script>
+<!-- Router -->
+<script src="app.js"></script>
+<!-- Notifications -->
+<script src="helpers/notification.js"></script>
+<script>
+    $(document).ajaxStart(function () {
+        $("#loadingBox").show();
+    });
+    $( document ).ajaxStop(function() {
+        $( "#loadingBox" ).hide();
+    });
+</script>
+</body>
+</html>

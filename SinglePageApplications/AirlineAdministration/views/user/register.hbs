@@ -1,0 +1,45 @@
+<!-- TODO add action="/#/register" method="POST" on the form. Check if username and password mach -->
+
+<section id="viewRegister">
+    <h2>Create your account:</h2>
+    <form id="formRegister" action="/#/register" method="POST">
+        <label>Username:</label>
+        <input type="text" name="username" placeholder="Username">
+        <div id="usernameValidation" class="text-danger"></div>
+        <label>Password:</label>
+        <input type="password" name="pass" placeholder="Password">
+        <div id="passValidation" class="text-danger"></div>
+        <label>Repeat Password:</label>
+        <input type="password" name="checkPass" placeholder="Repeat Password">
+        <div id="repPassValidation" class="text-danger"></div>
+        <input type="submit" class="register" value="Register">
+    </form>
+</section>
+
+<script>
+    $(function () {
+        $('#formRegister').on('submit', function (ev) {
+            $('.text-danger').text('')
+            let isValid = true;
+            if ($('input[name="username"]').val().length < 5) {
+                isValid = false;
+                $('#usernameValidation')
+                        .text("The field is required. A username should be at least 5 characters long.")
+                        .fadeOut(5000);
+            }
+            if ($('input[name="pass"]').val().length === 0) {
+                isValid = false;
+                $('#passValidation').text("The field is required.").fadeOut(5000);
+            }
+            if ($('input[name="pass"]').val() !== $('input[name="checkPass"]').val()) {
+                isValid = false;
+                $('#repPassValidation').text("Password does not match.").fadeOut(5000);
+            }
+
+            if (!isValid) {
+                ev.preventDefault();
+                ev.stopPropagation();
+            }
+        })
+    })();
+</script>

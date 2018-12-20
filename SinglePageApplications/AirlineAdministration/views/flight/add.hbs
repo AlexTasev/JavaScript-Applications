@@ -1,0 +1,38 @@
+<section id="viewAddFlight">
+    <h2>Add new flight</h2>
+    <form id="formAddFlight" action="#/flight/add" method="POST">
+        <label>Destination:</label>
+        <input type="text" name="destination" placeholder="Destination" required>
+        <label>Origin:</label>
+        <input type="text" name="origin" placeholder="Origin" required>
+        <label>Departure Date:</label>
+        <input type="date" name="departureDate">
+        <label>Departure Time:</label>
+        <input type="time" name="departureTime">
+        <label>Number of Seats:</label>
+        <input type="number" name="seats" placeholder="0">
+        <label>Cost per seat:</label>
+        <input type="number" step="2" name="cost" placeholder="0.00">
+        <label>Image:</label>
+        <input type="text" name="img">
+        <label>Is Public:</label>
+        <input type="checkbox" name="public">
+        <div id="formValidation" class="text-danger"></div>
+
+        <input type="submit" class="create" value="Create">
+    </form>
+</section>
+
+<script>
+    $(function () {
+        $('#formAddFlight').on('submit', function (event) {
+            if ($('input[name="seats"]').val() <= 0 ||
+                    $('input[name="cost"]').val() <= 0) {
+
+                event.preventDefault();
+                event.stopPropagation();
+                $('#formValidation').text('Please check seats and cost fields!').fadeOut(5000);
+            }
+        })
+    })
+</script>

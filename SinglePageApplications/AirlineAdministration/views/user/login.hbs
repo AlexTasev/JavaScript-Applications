@@ -1,0 +1,35 @@
+<!-- TODO add action="/#/register" method="POST" on the form. Check if username and password mach -->
+<section id="viewLogin">
+    <h2>Login to your account:</h2>
+    <form id="formLogin" action="#/login" method="POST">
+        <label>Username:</label>
+        <input type="text" name="username" placeholder="Enter your Username" >
+        <div id="usernameValidation" class="text-danger"></div>
+        <label>Password:</label>
+        <input type="password" name="pass" placeholder="Enter your Password">
+        <div id="passValidation" class="text-danger"></div>
+        <input type="submit" class="login" value="Login">
+    </form>
+</section>
+
+<script>
+    $(function () {
+        $('#formRegister').on('submit', function (ev) {
+            let isValid = true;
+            $('.text-danger').text("");
+            if ($('input[name="username"]').val().length < 5) {
+                isValid = false;
+                $('#usernameValidation').text("The field is required. A username should be at least 5 characters long.")
+            }
+            if ($('input[name="pass"]').val().length === 0) {
+                isValid = false;
+                $('#passValidation').text("The field is required.")
+            }
+
+            if (!isValid) {
+                ev.preventDefault();
+                ev.stopPropagation();
+            }
+        })
+    })();
+</script>
